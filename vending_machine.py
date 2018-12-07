@@ -22,7 +22,7 @@ def get_change(amount, coins=eur_coins):
     Returns a list of coin values
     """
     change = []
-    
+
     # Unlike a list, looping through a dictionary does not keep the order.
     # Therefore we use `sorted()` to sort the order. This will sstart with the
     # lowest by default, so we use `reverse=True` to start with the highest
@@ -33,7 +33,7 @@ def get_change(amount, coins=eur_coins):
             amount -= demonination
             coins[denomination] -= 1
             change.append(demonination)
-    
+
     if amount != 0:
         raise Exception("Insufficient coins to give change.")
 
@@ -55,6 +55,6 @@ test_are_equal(get_change(9), [5, 2, 2])
 test_are_equal(get_change(35, usd_coins), [25, 10])
 test_are_equal(get_change(5, {2: 1, 1: 4}), [2, 1, 1, 1])
 test_exception_was_raised(get_change, (5, {2: 1, 1: 2}),
-    "Insufficient coins to give change.")
+                          "Insufficient coins to give change.")
 
 print("All tests pass!")
